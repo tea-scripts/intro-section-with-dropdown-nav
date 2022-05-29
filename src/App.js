@@ -6,6 +6,7 @@ import { useSidebarContext } from './context/sidebar_context';
 
 function App() {
   const { isSidebarOpen } = useSidebarContext();
+
   return (
     <main className={`${isSidebarOpen ? 'overlay' : null}`}>
       <Sidebar />

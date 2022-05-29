@@ -26,7 +26,7 @@ Users should be able to:
 
 ### Screenshot
 
-![]()
+![](./src/images/mobile-view.png)
 
 ### Links
 
@@ -34,6 +34,8 @@ Users should be able to:
 - Live Site URL: [Netlify](https://intro-with-dropdown-landing-page.netlify.app/)
 
 ## My process
+
+I started development by setting up the page structure and components for each unique sections. Started developing the navigation for the mobile layout in it's respective component then moved on to the hero and complete structure. Then using CSS I styled the page then moved on to the sidebar. Created a custom hook (custom React context) to make the sidebar toggle available all through out the app. Then I proceeded to creating the dropdown sections for the sidebar.
 
 ### Built with
 
@@ -45,18 +47,54 @@ Users should be able to:
 
 ### What I learned
 
-```css
-
+```js
+const sidebar_reducer = (state, action) => {
+  if (action.type === 'OPEN_SIDEBAR') {
+    return { ...state, isSidebarOpen: true };
+  }
+  if (action.type === 'CLOSE_SIDEBAR') {
+    return { ...state, isSidebarOpen: false };
+  }
+  throw new Error(`No Matching "${action.type}" - action type`);
+};
 ```
 
-```js
+- Custom Hook for Sidebar toggle
 
+```js
+const initialState = {
+  isSidebarOpen: false,
+};
+
+const SidebarContext = React.createContext();
+export const SidebarProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const openSidebar = () => {
+    dispatch({ type: 'OPEN_SIDEBAR' });
+  };
+
+  const closeSidebar = () => {
+    dispatch({ type: 'CLOSE_SIDEBAR' });
+  };
+
+  return (
+    <SidebarContext.Provider
+      value={{
+        ...state,
+        openSidebar,
+        closeSidebar,
+      }}
+    >
+      {children}
+    </SidebarContext.Provider>
+  );
+};
+
+export const useSidebarContext = () => useContext(SidebarContext);
 ```
 
 ### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
 ## Author
 
