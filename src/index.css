@@ -230,7 +230,7 @@ a {
   align-items: center;
   line-height: 1.2;
   column-gap: 0.7em;
-  justify-content: start;
+  justify-content: flex-start;
   margin: 0.5em;
 }
 
