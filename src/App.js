@@ -12,7 +12,7 @@ function App() {
       <Sidebar />
       <Navbar />
       <Hero />
-      <Attribution />
+      {/* <Attribution /> */}
     </main>
   );
 }

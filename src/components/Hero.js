@@ -6,20 +6,26 @@ const Hero = () => {
   const windowWidth = window.innerWidth > 890;
   return (
     <section className="hero">
-      <img src={windowWidth ? heroDesktop : heroMobile} alt="hero" />
-      <div className="hero-text">
-        <h1>Make remote work</h1>
-        <p>
-          Get your team in sync, no matter your location. Streamline processes,
-          create team rituals, and watch productivity soar.
-        </p>
-        <button className="hero-btn">Learn more</button>
+      <div className="img-container">
+        <img src={windowWidth ? heroDesktop : heroMobile} alt="hero" />
       </div>
-      <div className="icons-container">
-        <Databiz className="icon" />
-        <Audiophile className="icon" />
-        <Meet className="icon" />
-        <Maker className="icon" />
+      <div className="content">
+        <div className="hero-text">
+          <h1>
+            Make <span>remote work</span>
+          </h1>
+          <p>
+            Get your team in sync, no matter your location. Streamline
+            processes, create team rituals, and watch productivity soar.
+          </p>
+          <button className="hero-btn">Learn more</button>
+        </div>
+        <div className="icons-container">
+          <Databiz className="icon" />
+          <Audiophile className="icon" />
+          <Meet className="icon" />
+          <Maker className="icon" />
+        </div>
       </div>
     </section>
   );
